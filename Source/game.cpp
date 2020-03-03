@@ -30,6 +30,7 @@ void Game::ChooseRace()
 
     int input = 0;
     input = atoi(s.c_str());
+    input--;
     if(input > man->raceNames->size()-1)
     {
         cout << "invalid input... Press 'Enter' to retry!" << endl;
@@ -72,6 +73,7 @@ void Game::ChooseRole()
 
     int input = 0;
     input = atoi(s.c_str());
+    input--;
     if(input > man->roleNames->size()-1)
     {
         cout << "invalid input... Press 'Enter' to retry!" << endl;
@@ -147,6 +149,10 @@ void Game::CreateCharacter()
     ChooseRole();
     Game::ClearScreen();
     cout << "You are now ready - Lets take a final look at your stats!" << endl;
+
+}
+void Game::outofcombatCalc()
+{
 
 }
 
