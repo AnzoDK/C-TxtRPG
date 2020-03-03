@@ -22,7 +22,7 @@ void Game::ChooseRace()
     cout << "Now now - We also need to find out what your race is!" << endl;
     for(int i = 0; i < man->raceNames->size();i++)
     {
-        cout << i+1 << man->raceNames->at(i) << endl;
+        cout << i+1 << ". " << man->raceNames->at(i) << endl;
     }
     cout << ">";
     string s;
@@ -65,7 +65,7 @@ void Game::ChooseRole()
     StatManager* man = new StatManager();
     for(int i = 0; i < man->roleNames->size();i++)
     {
-        cout << i+1 << man->roleNames->at(i) << endl;
+        cout << i+1 << ". " << man->roleNames->at(i) << endl;
     }
     cout << ">";
     string s;
