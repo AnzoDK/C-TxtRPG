@@ -6,18 +6,16 @@ struct Stats
 {
     int Int,Dex,Str,Mem,Cha,Per,Luc;
     void RollStats();
+    void PrintStats();
 };
 
 class Role
 {
     public:
-        Role();
         std::string name;
-        Stats RoleStats;   
-        void SelectRole(int index);  
+        Stats RoleStats;  
     private:
-        std::vector<Stats> *roleStats;
-        std::vector<std::string> *roleNames;     
+        
 
 };
 class Race
@@ -25,6 +23,18 @@ class Race
     public:
         std::string name;
         Stats RaceStats;
+};
+
+class StatManager
+{
+    public:
+        StatManager();
+        std::vector<Stats> *roleStats;
+        std::vector<std::string> *roleNames;
+        std::vector<Stats> *raceStats;
+        std::vector<std::string> *raceNames;
+        Role SelectRole(int index);
+        Race SelectRace(int index);
 };
 
 class Character

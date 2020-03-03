@@ -1,4 +1,4 @@
-#include <iostream>
+/*#include <iostream>
 int doubleToIntConvert(double d)
 {
 std::cout << d << std::endl;
@@ -14,7 +14,7 @@ int i = doubleToIntConvert(3.212);
 
 }
 
-
+*/
 /*
 Prefixes for Types in C++
 
