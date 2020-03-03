@@ -41,7 +41,7 @@ void Game::ChooseRace()
     {
         Game::ClearScreen();
         man->PrintRaceStats(input);
-        cout << "Press 'Enter' to accept these stats or 'x' to return" << endl;
+        cout << "Press 'y' to accept these stats or 'x' to return" << endl;
         char c;
         cin >> c;
         if(c == 'x')
@@ -84,7 +84,7 @@ void Game::ChooseRole()
     {
         Game::ClearScreen();
         man->PrintRoleStats(input);
-        cout << "Press 'Enter' to accept these stats or 'x' to return" << endl;
+        cout << "Press 'y' to accept these stats or 'x' to return" << endl;
         char c;
         cin >> c;
         if(c == 'x')
@@ -121,7 +121,8 @@ void Game::ShowStats()
     cout << "Your current stats are: " << endl;
     std::cout 
     << "Intelligence: " << character->currentStats.Int << std::endl 
-    << "Dexterity: " << character->currentStats.Dex << std::endl << "Strength: " << std::endl 
+    << "Dexterity: " << character->currentStats.Dex << std::endl 
+	<< "Strength: " << character->currentStats.Str << std::endl 
     << "Memory: " << character->currentStats.Mem << std::endl 
     << "Charisma: " << character->currentStats.Cha << std::endl 
     << "Perception: " << character->currentStats.Per << std::endl 
