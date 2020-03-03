@@ -35,6 +35,9 @@ class StatManager
         std::vector<std::string> *raceNames;
         Role SelectRole(int index);
         Race SelectRace(int index);
+        void PrintRaceStats(int index);
+        void PrintRoleStats(int index);
+        
 };
 
 class Character
@@ -44,6 +47,7 @@ class Character
         Role characterRole;
         Race characterRace;
         Stats characterStats;
+        Stats currentStats;
         void CreateCharacter();
     private:
         Stats m_bonusStats;

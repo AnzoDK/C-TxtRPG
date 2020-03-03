@@ -87,3 +87,25 @@ Race StatManager::SelectRace(int index)
     }
     return race;   
 }
+void StatManager::PrintRaceStats(int index)
+{
+    std::cout << "This race has the following bonus stats..." << std::endl;
+    std::cout 
+    << "Intelligence: " << raceStats->at(index).Int << std::endl 
+    << "Dexterity: " << raceStats->at(index).Dex << std::endl << "Strength: " << std::endl 
+    << "Memory: " << raceStats->at(index).Mem << std::endl 
+    << "Charisma: " << raceStats->at(index).Cha << std::endl 
+    << "Perception: " << raceStats->at(index).Per << std::endl 
+    << "Luck: " << raceStats->at(index).Luc << std::endl;
+}
+void StatManager::PrintRoleStats(int index)
+{
+    std::cout << "This role has the following bonus stats..." << std::endl;
+    std::cout 
+    << "Intelligence: " << roleStats->at(index).Int << std::endl 
+    << "Dexterity: " << roleStats->at(index).Dex << std::endl << "Strength: " << std::endl 
+    << "Memory: " << roleStats->at(index).Mem << std::endl 
+    << "Charisma: " << roleStats->at(index).Cha << std::endl 
+    << "Perception: " << roleStats->at(index).Per << std::endl 
+    << "Luck: " << roleStats->at(index).Luc << std::endl;
+}
