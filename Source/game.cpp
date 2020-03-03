@@ -150,7 +150,10 @@ void Game::CreateCharacter()
     ChooseRole();
     Game::ClearScreen();
     cout << "You are now ready - Lets take a final look at your stats!" << endl;
-
+	ShowStats();
+	cout << "Press 'Enter' to start" << endl;
+	string a;
+	getline(cin,a);
 }
 void Game::outofcombatCalc()
 {
