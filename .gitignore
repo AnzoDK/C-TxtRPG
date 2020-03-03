@@ -3,6 +3,11 @@ Bin/*
 C_TxtRPG.project
 C_TxtRPG.workspace
 compile_commands.json
-compile_flags.C_TxtRPG
+compile_flags.txt
+C_TxtRPG.mk
+C_TxtRPG.txt
+Makefile
+.d/*
+Debug/*
 .codelite/*
 .vscode/*
