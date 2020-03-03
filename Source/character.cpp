@@ -37,6 +37,7 @@ StatManager::StatManager()
     researcher.Str = -2;
     researcher.Mem = 4;
     researcher.Per = 3;
+    researcher.Luc = 2;
     roleStats->push_back(researcher);
     //Races
     raceNames->push_back("Human");
@@ -47,6 +48,7 @@ StatManager::StatManager()
     human.Str = 1;
     human.Mem = -2;
     human.Per = -1;
+    human.Luc = 1;
     raceStats->push_back(human);
 
 
