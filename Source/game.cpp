@@ -101,7 +101,7 @@ void Game::ChooseRole()
         
     }
     delete(man);
-    
+    //return;
 }
 void Game::updateStats()
 {

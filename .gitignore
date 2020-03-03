@@ -1,2 +1,8 @@
 *.o
 Bin/*
+C_TxtRPG.project
+C_TxtRPG.workspace
+compile_commands.json
+compile_flags.C_TxtRPG
+.codelite/*
+.vscode/*
