@@ -28,7 +28,7 @@ class Safezone : Room
 class Floor
 {
     public:
-        long floorCount;
+        //long floorCount;
         std::vector<Room> floorRooms;
 };
 
@@ -49,9 +49,10 @@ class Layout
 class Dungeon
 {
     public:
-        void GenerateLayout();
+        void GenerateLayout(Floor f);
         void GenerateFloors();
         void GenerateRooms();
+        std::vector<Floor> floors;
         unsigned long dungeonsBeat;
 
 };
