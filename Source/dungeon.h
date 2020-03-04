@@ -11,6 +11,8 @@ class Room
         long roomCount;
         virtual void OnEnter();
         long id;
+        RoomType getRoomType();
+        RoomConnector rc;
     private:
         RoomType rt;
 };
@@ -35,9 +37,12 @@ class Floor
 class RoomConnector
 {
     public:
-        Room room;
-        std::vector<long> connectsTo;
-        long comesFrom;
+        RoomConnector();
+        int right;
+        int left;
+        int forward;
+        int backwards;
+        //long comesFrom;
 };
 
 class Layout
@@ -49,10 +54,11 @@ class Layout
 class Dungeon
 {
     public:
-        void GenerateLayout(Floor f);
+        void GenerateLayout(int entryID,int exitID,Floor f,std::default_random_engine rng);
         void GenerateFloors();
         void GenerateRooms();
         std::vector<Floor> floors;
         unsigned long dungeonsBeat;
-
+    private:
+        
 };
