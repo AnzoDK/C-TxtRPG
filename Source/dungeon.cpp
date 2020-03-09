@@ -94,6 +94,7 @@ void Room::init(RoomType T)
     rt = T;
     rc = new RoomConnector();
     re = RoomEvent();
+    connected = true;
 }
 void Room::OnEnter()
 {

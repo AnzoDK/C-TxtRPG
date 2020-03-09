@@ -312,8 +312,11 @@ void Game::ProcessMove()
 
     if(nextDirection == "forward")
     {
-        currDungeon.currentRoom->rc->r_forward = currDungeon.GenerateRoom();
-        currDungeon.currentRoom->rc->r_forward->rc->r_backwards = currDungeon.currentRoom;
+        if(currDungeon.currentRoom->rc->r_forward->connected == false)
+        {
+            currDungeon.currentRoom->rc->r_forward = currDungeon.GenerateRoom();
+            currDungeon.currentRoom->rc->r_forward->rc->r_backwards = currDungeon.currentRoom;
+        }
         currDungeon.currentRoom = currDungeon.currentRoom->rc->r_forward;
     }
     else if(nextDirection == "backwards")
@@ -323,14 +326,20 @@ void Game::ProcessMove()
     }
     else if(nextDirection == "right")
     {
+        if(currDungeon.currentRoom->rc->r_right->connected == false)
+        {
         currDungeon.currentRoom->rc->r_right = currDungeon.GenerateRoom();
         currDungeon.currentRoom->rc->r_right->rc->r_backwards = currDungeon.currentRoom;
+        }
         currDungeon.currentRoom = currDungeon.currentRoom->rc->r_right;
     }
     else
     {
-        currDungeon.currentRoom->rc->r_left = currDungeon.GenerateRoom();
-        currDungeon.currentRoom->rc->r_left->rc->r_backwards = currDungeon.currentRoom;
+        if(currDungeon.currentRoom->rc->r_left->connected == false)
+        {
+            currDungeon.currentRoom->rc->r_left = currDungeon.GenerateRoom();
+            currDungeon.currentRoom->rc->r_left->rc->r_backwards = currDungeon.currentRoom;
+        }
         currDungeon.currentRoom = currDungeon.currentRoom->rc->r_left;
     }
     currDungeon.currentRoom->OnEnter();

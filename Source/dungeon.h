@@ -41,7 +41,7 @@ class Ambush : public RoomEvent
 class Room
 {
     public:
-        Room(){};
+        Room(){connected = false;};
         Room(RoomType T)
         {
             init(T);
@@ -53,6 +53,7 @@ class Room
         RoomType getRoomType();
         RoomConnector* rc;
         RoomEvent re;
+        bool connected;
     private:
         RoomType rt;
         void init(RoomType T);
