@@ -308,6 +308,7 @@ string Game::GetInput()
 
 void Game::ProcessMove()
 {
+	Game::ClearScreen();
 
     if(nextDirection == "forward")
     {
