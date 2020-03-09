@@ -201,6 +201,74 @@ if(currDungeon.currentRoom->re.getEventName() == "None")
                     }
                     
                 break;
+                case RoomType::Troom:
+                    if(input.find("backwards") != string::npos)
+                    {
+                       nextDirection = "backwards";
+                    }
+                    else if(input.find("right") != string::npos)
+                    {
+                       nextDirection = "right";
+                    }
+                    else if(input.find("left") != string::npos)
+                    {
+                       nextDirection = "left";
+                    }
+                    else
+                    {
+                        cout << "Invalid Input..." << endl;
+                        GetInput();
+                    }
+                    
+                break;
+                case RoomType::crossRoom:
+                    if(input.find("forward") != string::npos)
+                    {
+                        nextDirection = "forward";
+                    }
+                    else if(input.find("backwards") != string::npos)
+                    {
+                       nextDirection = "backwards";
+                    }
+                    else if(input.find("right") != string::npos)
+                    {
+                       nextDirection = "right";
+                    }
+                    else if(input.find("left") != string::npos)
+                    {
+                       nextDirection = "left";
+                    }
+                    else
+                    {
+                        cout << "Invalid Input..." << endl;
+                        GetInput();
+                    }
+                    
+                break;
+                case RoomType::entry:
+                    if(input.find("forward") != string::npos)
+                    {
+                        nextDirection = "forward";
+                    }
+                    else
+                    {
+                        cout << "Invalid Input..." << endl;
+                        GetInput();
+                    }
+                    
+                break;
+                case RoomType::exit_room:
+                    if(input.find("backwards") != string::npos)
+                    {
+                       nextDirection = "backwards";
+                    }
+                    else
+                    {
+                        cout << "Invalid Input..." << endl;
+                        GetInput();
+                    }
+                    
+                break;
             }
         }
         else
