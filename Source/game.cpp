@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include "game.h"
 using namespace std;
+string Game::nextDirection = "";
 void Game::ClearScreen()
 {
     

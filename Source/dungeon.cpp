@@ -4,18 +4,25 @@
 #include "dice.h"
 #include "game.h"
 
-Room::Room()
-{
-    //this will never be used anyway...
-    int id = 0;
-};
 
-RoomEvent::RoomEvent()
+
+/*RoomEvent::RoomEvent()
 {
     options = "";
     eventName = "None";
     Init();
+}*/
+void RoomEvent::Init()
+{
+    //Empty
 }
+
+void RoomEvent::PreInit()
+{
+    options = "";
+    eventName = "None";
+}
+
 int RoomEvent::Event()
 {
     //this is the None-Event...
@@ -74,11 +81,21 @@ void Ambush::useOptions(std::string input, Character* c)
 }
 
 
-Room::Room(RoomType T)
+/*Room::Room(RoomType T)
 {
     rt = T;
     rc = new RoomConnector();
     re = RoomEvent();
+}*/
+void Room::init(RoomType T)
+{
+    rt = T;
+    rc = new RoomConnector();
+    re = RoomEvent();
+}
+void Room::OnEnter()
+{
+    //Normal Room = no output
 }
 RoomType Room::getRoomType()
 {

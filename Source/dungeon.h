@@ -12,7 +12,11 @@ enum RoomType{normal,Troom,crossRoom,exit_room,entry,dead_end};
 class RoomEvent
 {
     public:
-        RoomEvent();
+        RoomEvent()
+        {
+            PreInit();
+            Init();
+        }
         virtual void Init();
         virtual int Event();
         virtual void useOptions(std::string input, Character* c);
@@ -20,6 +24,7 @@ class RoomEvent
     private:
         std::string options;
         std::string eventName;
+        void PreInit();
 };
 
 class Ambush : public RoomEvent
@@ -36,8 +41,11 @@ class Ambush : public RoomEvent
 class Room
 {
     public:
-        Room();
-        Room(RoomType T);
+        Room(){};
+        Room(RoomType T)
+        {
+            init(T);
+        };
         long roomCount;
         virtual void OnEnter();
         //Sadly we must live without this feature...
@@ -47,9 +55,10 @@ class Room
         RoomEvent re;
     private:
         RoomType rt;
+        void init(RoomType T);
 };
 
-class Safezone : Room
+class Safezone : public Room
 {
     public:
         virtual void OnEnter() override
