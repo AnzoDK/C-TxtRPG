@@ -48,7 +48,8 @@ class Character
         Race characterRace;
         Stats characterStats;
         Stats currentStats;
-        void CreateCharacter();
+        Stats bonusStats;
+        //void CreateCharacter();
     private:
         Stats m_bonusStats;
 };
