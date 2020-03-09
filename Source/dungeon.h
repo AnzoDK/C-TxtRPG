@@ -71,10 +71,10 @@ class RoomConnector
         //int left;
         //int forward;
         //int backwards;
-        Room r_right;
-        Room r_left;
-        Room r_forward;
-        Room r_backwards;
+        Room r_right = Room();
+        Room r_left = Room();
+        Room r_forward = Room();
+        Room r_backwards = Room();
         //long comesFrom;
 };
 
