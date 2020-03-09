@@ -203,6 +203,13 @@ if(currDungeon.currentRoom->re.getEventName() == "None")
                 break;
             }
         }
+        else
+        {
+            Game::ClearScreen();
+            cout << "Invalid Input" << endl;
+            GetInput();
+        }
+        
     }
     else
     {
