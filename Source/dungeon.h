@@ -1,7 +1,34 @@
 #pragma once
 #include <iostream>
 #include <vector>
-enum RoomType{normal,Troom,crossRoom,exit,entry};
+#include <algorithm>
+#include <random>
+#include "character.h"
+enum RoomType{normal,Troom,crossRoom,exit,entry,dead_end};
+
+class RoomEvent
+{
+    public:
+        RoomEvent();
+        virtual void Init();
+        virtual int Event();
+        virtual void useOptions(std::string input, Character* c);
+        std::string getEventName();
+    private:
+        std::string options;
+        std::string eventName;
+};
+
+class Ambush : public RoomEvent
+{
+    public:
+        virtual void Init() override;
+        virtual int Event() override;
+        virtual void useOptions(std::string input, Character* c) override;
+    private:
+        std::string options;
+        std::string eventName;
+};
 
 class Room
 {
@@ -10,9 +37,11 @@ class Room
         Room(RoomType T);
         long roomCount;
         virtual void OnEnter();
-        long id;
+        //Sadly we must live without this feature...
+        int id;
         RoomType getRoomType();
         RoomConnector rc;
+        RoomEvent re;
     private:
         RoomType rt;
 };
@@ -38,27 +67,29 @@ class RoomConnector
 {
     public:
         RoomConnector();
-        int right;
-        int left;
-        int forward;
-        int backwards;
+        //int right;
+        //int left;
+        //int forward;
+        //int backwards;
+        Room r_right;
+        Room r_left;
+        Room r_forward;
+        Room r_backwards;
         //long comesFrom;
-};
-
-class Layout
-{
-    public:
-        
 };
 
 class Dungeon
 {
     public:
-        void GenerateLayout(int entryID,int exitID,Floor f,std::default_random_engine rng);
-        void GenerateFloors();
-        void GenerateRooms();
-        std::vector<Floor> floors;
-        unsigned long dungeonsBeat;
+        //void GenerateLayout(int entryID,int exitID,Floor f,std::default_random_engine rng);
+        //void GenerateFloors();
+        //void GenerateRooms();   
+        //std::vector<Floor> floors;
+        int floorID;
+        Room currentRoom;
+        Room GenerateRoom();
+        //unsigned long dungeonsBeat;
     private:
+        //int GenerateRoom(std::vector<Room> *rs, int *createCounter);
         
 };
