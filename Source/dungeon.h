@@ -4,7 +4,10 @@
 #include <algorithm>
 #include <random>
 #include "character.h"
-enum RoomType{normal,Troom,crossRoom,exit,entry,dead_end};
+#include "roomConnector.h"
+class RoomConnector;
+
+enum RoomType{normal,Troom,crossRoom,exit_room,entry,dead_end};
 
 class RoomEvent
 {
@@ -33,14 +36,14 @@ class Ambush : public RoomEvent
 class Room
 {
     public:
-        Room(){};
+        Room();
         Room(RoomType T);
         long roomCount;
         virtual void OnEnter();
         //Sadly we must live without this feature...
         int id;
         RoomType getRoomType();
-        RoomConnector rc;
+        RoomConnector* rc;
         RoomEvent re;
     private:
         RoomType rt;
@@ -63,21 +66,6 @@ class Floor
         std::vector<Room> floorRooms;
 };
 
-class RoomConnector
-{
-    public:
-        RoomConnector();
-        //int right;
-        //int left;
-        //int forward;
-        //int backwards;
-        Room r_right = Room();
-        Room r_left = Room();
-        Room r_forward = Room();
-        Room r_backwards = Room();
-        //long comesFrom;
-};
-
 class Dungeon
 {
     public:
@@ -86,8 +74,10 @@ class Dungeon
         //void GenerateRooms();   
         //std::vector<Floor> floors;
         int floorID;
-        Room currentRoom;
-        Room GenerateRoom();
+        Room* currentRoom;
+        Room* GenerateRoom();
+        void DeleteRooms();
+        std::vector<Room*> rooms;
         //unsigned long dungeonsBeat;
     private:
         //int GenerateRoom(std::vector<Room> *rs, int *createCounter);

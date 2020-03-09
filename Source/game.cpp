@@ -176,11 +176,11 @@ void Game::outofcombatCalc()
 void Game::Validate(std::string input)
 {
 
-if(currDungeon.currentRoom.re.getEventName() == "None")
+if(currDungeon.currentRoom->re.getEventName() == "None")
     {
         if(input.find("forward") != string::npos || input.find("backwards") != string::npos || input.find("right") != string::npos || input.find("left") != string::npos)
         {
-            switch(currDungeon.currentRoom.getRoomType())
+            switch(currDungeon.currentRoom->getRoomType())
             {
                 case RoomType::normal:
                     if(input.find("forward") != string::npos)
@@ -210,7 +210,7 @@ if(currDungeon.currentRoom.re.getEventName() == "None")
         }
         else
         {
-            currDungeon.currentRoom.re.useOptions(input, character);
+            currDungeon.currentRoom->re.useOptions(input, character);
         }
         
     }
@@ -233,28 +233,28 @@ void Game::ProcessMove()
 
     if(nextDirection == "forward")
     {
-        currDungeon.currentRoom.rc.r_forward = currDungeon.GenerateRoom();
-        currDungeon.currentRoom.rc.r_forward.rc.r_backwards = currDungeon.currentRoom;
-        currDungeon.currentRoom = currDungeon.currentRoom.rc.r_forward;
+        currDungeon.currentRoom->rc->r_forward = currDungeon.GenerateRoom();
+        currDungeon.currentRoom->rc->r_forward->rc->r_backwards = currDungeon.currentRoom;
+        currDungeon.currentRoom = currDungeon.currentRoom->rc->r_forward;
     }
     else if(nextDirection == "backwards")
     {
-        currDungeon.currentRoom = currDungeon.currentRoom.rc.r_backwards;
+        currDungeon.currentRoom = currDungeon.currentRoom->rc->r_backwards;
         
     }
     else if(nextDirection == "right")
     {
-        currDungeon.currentRoom.rc.r_right = currDungeon.GenerateRoom();
-        currDungeon.currentRoom.rc.r_right.rc.r_backwards = currDungeon.currentRoom;
-        currDungeon.currentRoom = currDungeon.currentRoom.rc.r_right;
+        currDungeon.currentRoom->rc->r_right = currDungeon.GenerateRoom();
+        currDungeon.currentRoom->rc->r_right->rc->r_backwards = currDungeon.currentRoom;
+        currDungeon.currentRoom = currDungeon.currentRoom->rc->r_right;
     }
     else
     {
-        currDungeon.currentRoom.rc.r_left = currDungeon.GenerateRoom();
-        currDungeon.currentRoom.rc.r_left.rc.r_backwards = currDungeon.currentRoom;
-        currDungeon.currentRoom = currDungeon.currentRoom.rc.r_left;
+        currDungeon.currentRoom->rc->r_left = currDungeon.GenerateRoom();
+        currDungeon.currentRoom->rc->r_left->rc->r_backwards = currDungeon.currentRoom;
+        currDungeon.currentRoom = currDungeon.currentRoom->rc->r_left;
     }
-    currDungeon.currentRoom.OnEnter();
+    currDungeon.currentRoom->OnEnter();
     
     
     
@@ -270,7 +270,7 @@ void Game::processTurn()
     else
     {
         //wait for input;
-        switch(currDungeon.currentRoom.getRoomType())
+        switch(currDungeon.currentRoom->getRoomType())
         {
             case RoomType::normal:
                 cout << "You stand in a hallway - One way forward, one way back..." << endl;
@@ -293,12 +293,12 @@ void Game::processTurn()
                 cout << "You enter a dark room. You let your hand slide along the cold, hard stone walls..." << endl << "To your suprise you realize that there is no way to go... It's a dead end!" << endl;
                 cout << "[Options: backwards]" << endl;
             break;
-            case RoomType::exit:
+            case RoomType::exit_room:
                 cout << "A well lit room apears before your eyes... The door behind you shuts close, with the force of Thor..." << endl << "You shake in fear, awating your death... But it never comes..." << endl << "Instead, the ground underneath you starts to fall apart... You spot a ladder that goes downwards..." << endl;
                 cout << "[Options: exit (floor)]" << endl;
             break;
         }
-        if(!currDungeon.currentRoom.re.Event())
+        if(!currDungeon.currentRoom->re.Event())
         {
             //Success we proccessed the Event correctly
         }

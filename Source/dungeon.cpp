@@ -3,19 +3,12 @@
 #include <random>
 #include "dice.h"
 #include "game.h"
-RoomConnector::RoomConnector()
+
+Room::Room()
 {
-    /*
-    right = -1;
-    left = -1;
-    forward = -1;
-    backwards = -1;
-    */
-   r_right = Room();
-   r_left = Room();
-   r_forward = Room();
-   r_backwards = Room();
-}
+    //this will never be used anyway...
+    int id = 0;
+};
 
 RoomEvent::RoomEvent()
 {
@@ -84,7 +77,7 @@ void Ambush::useOptions(std::string input, Character* c)
 Room::Room(RoomType T)
 {
     rt = T;
-    rc = RoomConnector();
+    rc = new RoomConnector();
     re = RoomEvent();
 }
 RoomType Room::getRoomType()
@@ -92,27 +85,35 @@ RoomType Room::getRoomType()
     return rt;
 }
 
-Room Dungeon::GenerateRoom()
+Room* Dungeon::GenerateRoom()
 {
-    Room tmpRoom = Room(static_cast<RoomType>(Dice::iRoll(3)-1));
+    Room* tmpRoom = new Room(static_cast<RoomType>(Dice::iRoll(3)-1));
     if(Dice::iRoll(100) > 70)
     {
         switch(Dice::iRoll(2))
         {
             case 1:
-                tmpRoom.re = Ambush();
+                tmpRoom->re = Ambush();
             break;
             case 2:
-                tmpRoom.re = RoomEvent();
+                tmpRoom->re = RoomEvent();
             break;
         }
     }
     else
     {
-        tmpRoom.re = RoomEvent();
+        tmpRoom->re = RoomEvent();
     }
+    rooms.push_back(tmpRoom);
     return tmpRoom;
     
+}
+void Dungeon::DeleteRooms()
+{
+    for(int i = 0; i < rooms.size();i++)
+    {
+        delete(rooms.at(i));
+    }
 }
 
 
