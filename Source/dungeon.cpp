@@ -26,6 +26,8 @@ void RoomEvent::PreInit()
 int RoomEvent::Event()
 {
     //this is the None-Event...
+    //This always return 0 :)
+    return 0;
 }
 void RoomEvent::useOptions(std::string input, Character* c)
 {

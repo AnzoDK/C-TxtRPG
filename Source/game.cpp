@@ -165,6 +165,8 @@ void Game::CreateCharacter()
 	string a;
 	getline(cin,a);
     running = true;
+    this->currDungeon = Dungeon();
+    this->currDungeon.currentRoom = new Room(RoomType::entry);
 }
 void Game::outofcombatCalc()
 {
@@ -220,7 +222,7 @@ if(currDungeon.currentRoom->re.getEventName() == "None")
 
 string Game::GetInput()
 {
-
+    cout << "> ";
     string input = "";
     getline(cin,input);
     Validate(input);
