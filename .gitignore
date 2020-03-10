@@ -9,5 +9,7 @@ C_TxtRPG.txt
 Makefile
 .d/*
 Debug/*
+Debug_Linux/*
+Sign Keys/*
 .codelite/*
 .vscode/*
