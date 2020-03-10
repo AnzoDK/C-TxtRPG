@@ -1,5 +1,6 @@
 #include "character.h"
 #include "dice.h"
+#include <time.h>
 void Stats::RollStats()
 {
     
