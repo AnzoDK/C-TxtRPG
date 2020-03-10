@@ -1,21 +1,64 @@
 #pragma once
 #include <iostream>
 #include <vector>
-enum RoomType{normal,Troom,crossRoom,exit,entry};
+#include <algorithm>
+#include <random>
+#include "character.h"
+#include "roomConnector.h"
+class RoomConnector;
+
+enum RoomType{normal,Troom,crossRoom,exit_room,entry,dead_end};
+
+class RoomEvent
+{
+    public:
+        RoomEvent()
+        {
+            PreInit();
+            Init();
+        }
+        virtual void Init();
+        virtual int Event();
+        virtual void useOptions(std::string input, Character* c);
+        std::string getEventName();
+    private:
+        std::string options;
+        std::string eventName;
+        void PreInit();
+};
+
+class Ambush : public RoomEvent
+{
+    public:
+        virtual void Init() override;
+        virtual int Event() override;
+        virtual void useOptions(std::string input, Character* c) override;
+    private:
+        std::string options;
+        std::string eventName;
+};
 
 class Room
 {
     public:
         Room(){};
-        Room(RoomType T);
+        Room(RoomType T)
+        {
+            init(T);
+        };
         long roomCount;
         virtual void OnEnter();
-        long id;
+        //Sadly we must live without this feature...
+        int id;
+        RoomType getRoomType();
+        RoomConnector* rc;
+        RoomEvent re;
     private:
         RoomType rt;
+        void init(RoomType T);
 };
 
-class Safezone : Room
+class Safezone : public Room
 {
     public:
         virtual void OnEnter() override
@@ -28,30 +71,24 @@ class Safezone : Room
 class Floor
 {
     public:
-        long floorCount;
+        //long floorCount;
         std::vector<Room> floorRooms;
-};
-
-class RoomConnector
-{
-    public:
-        Room room;
-        std::vector<long> connectsTo;
-        long comesFrom;
-};
-
-class Layout
-{
-    public:
-        
 };
 
 class Dungeon
 {
     public:
-        void GenerateLayout();
-        void GenerateFloors();
-        void GenerateRooms();
-        unsigned long dungeonsBeat;
-
+        //void GenerateLayout(int entryID,int exitID,Floor f,std::default_random_engine rng);
+        //void GenerateFloors();
+        //void GenerateRooms();   
+        //std::vector<Floor> floors;
+        int floorID;
+        Room* currentRoom;
+        Room* GenerateRoom();
+        void DeleteRooms();
+        std::vector<Room*> rooms;
+        //unsigned long dungeonsBeat;
+    private:
+        //int GenerateRoom(std::vector<Room> *rs, int *createCounter);
+        
 };

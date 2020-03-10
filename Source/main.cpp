@@ -7,6 +7,8 @@ int main()
     while(g->running)
     {
         g->updateStats();
+        g->processTurn();
+        g->ProcessMove();
         g->outofcombatCalc();
     }
     return 0;
