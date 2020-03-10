@@ -21,7 +21,6 @@ class EnemyBase : public EntityBase
     public:
         EnemyBase();
         virtual void OnBattleStart();
-        int level;
         Stats eStats;
         std::string name;
         DamageType weakness;

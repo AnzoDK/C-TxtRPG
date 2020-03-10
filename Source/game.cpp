@@ -3,6 +3,7 @@
 #include "game.h"
 using namespace std;
 string Game::nextDirection = "";
+CombatManager comMan = CombatManager();
 void Game::ClearScreen()
 {
     
@@ -15,7 +16,6 @@ Game::Game()
 {
     inBattle = false;
     running = false;
-    comMan = CombatManager();
     Game::ClearScreen();
     cout << "Welcome to CTXTRPG" << endl;
 }
@@ -164,7 +164,7 @@ void Game::CreateCharacter()
     cout << "You are now ready - Lets take a final look at your stats!" << endl;
 	ShowStats();
 	cout << "Press 'Enter' to start" << endl;
-	string a;
+	string a = "";
 	getline(cin,a);
     running = true;
     this->currDungeon = Dungeon();
@@ -275,7 +275,7 @@ if(currDungeon.currentRoom->re.getEventName() == "None")
         }
         else
         {
-            Game::ClearScreen();
+            
             cout << "Invalid Input" << endl;
             GetInput();
         }

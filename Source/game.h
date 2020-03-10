@@ -21,7 +21,7 @@ class Game
         bool running;
         Dungeon currDungeon;
         void ProcessMove();
-        CombatManager comMan;
+        static CombatManager comMan;
     private:
         unsigned long turnCount;
         std::string GetInput();

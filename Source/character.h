@@ -7,6 +7,7 @@ class EntityBase
 {
     public:
         EntityBase();
+        int level;
         
 };
 
@@ -58,7 +59,6 @@ class Character : public EntityBase
         Stats characterStats;
         Stats currentStats;
         Stats bonusStats;
-        int level;
         long exp;
         //void CreateCharacter();
     private:
