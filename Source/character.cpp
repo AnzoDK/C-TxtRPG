@@ -1,6 +1,24 @@
 #include "character.h"
 #include "dice.h"
 #include <time.h>
+
+Stats::Stats()
+{
+    Int = 0;
+    Dex = 0;
+    Str = 0;
+    Mem = 0;
+    Cha = 0;
+    Per = 0;
+    Luc = 0;
+}
+
+
+EntityBase::EntityBase()
+{
+
+}
+
 void Stats::RollStats()
 {
     

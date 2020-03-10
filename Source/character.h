@@ -2,8 +2,17 @@
 
 #include <iostream>
 #include <vector>
+
+class EntityBase
+{
+    public:
+        EntityBase();
+        
+};
+
 struct Stats
 {
+    Stats();
     int Int,Dex,Str,Mem,Cha,Per,Luc;
     void RollStats();
     void PrintStats();
@@ -40,7 +49,7 @@ class StatManager
         
 };
 
-class Character
+class Character : public EntityBase
 {
     public:
         std::string name;
@@ -49,6 +58,8 @@ class Character
         Stats characterStats;
         Stats currentStats;
         Stats bonusStats;
+        int level;
+        long exp;
         //void CreateCharacter();
     private:
         Stats m_bonusStats;

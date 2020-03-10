@@ -1,6 +1,7 @@
 #pragma once
 #include "character.h"
 #include "dungeon.h"
+#include "combat.h"
 class Game
 {
     public:
@@ -20,6 +21,7 @@ class Game
         bool running;
         Dungeon currDungeon;
         void ProcessMove();
+        CombatManager comMan;
     private:
         unsigned long turnCount;
         std::string GetInput();

@@ -130,7 +130,7 @@ Room* Dungeon::GenerateRoom()
 }
 void Dungeon::DeleteRooms()
 {
-    for(int i = 0; i < rooms.size();i++)
+    for(unsigned int i = 0; i < rooms.size();i++)
     {
         delete(rooms.at(i));
     }

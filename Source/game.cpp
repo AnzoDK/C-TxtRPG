@@ -15,13 +15,15 @@ Game::Game()
 {
     inBattle = false;
     running = false;
+    comMan = CombatManager();
+    Game::ClearScreen();
     cout << "Welcome to CTXTRPG" << endl;
 }
 void Game::ChooseRace()
 {
     StatManager* man = new StatManager();
     cout << "Now now - We also need to find out what your race is!" << endl;
-    for(int i = 0; i < man->raceNames->size();i++)
+    for(unsigned int i = 0; i < man->raceNames->size();i++)
     {
         cout << i+1 << ". " << man->raceNames->at(i) << endl;
     }
@@ -32,7 +34,7 @@ void Game::ChooseRace()
     int input = 0;
     input = atoi(s.c_str());
     input--;
-    if(input > man->raceNames->size()-1)
+    if((unsigned int)input > man->raceNames->size()-1)
     {
         cout << "invalid input... Press 'Enter' to retry!" << endl;
         cin;
@@ -64,7 +66,7 @@ void Game::ChooseRace()
 void Game::ChooseRole()
 {
     StatManager* man = new StatManager();
-    for(int i = 0; i < man->roleNames->size();i++)
+    for(unsigned int i = 0; i < man->roleNames->size();i++)
     {
         cout << i+1 << ". " << man->roleNames->at(i) << endl;
     }
@@ -75,7 +77,7 @@ void Game::ChooseRole()
     int input = 0;
     input = atoi(s.c_str());
     input--;
-    if(input > man->roleNames->size()-1)
+    if((unsigned int)input > man->roleNames->size()-1)
     {
         cout << "invalid input... Press 'Enter' to retry!" << endl;
         cin;
@@ -353,7 +355,7 @@ void Game::processTurn()
 {
     if(inBattle)
     {
-
+        
     }
     else
     {
